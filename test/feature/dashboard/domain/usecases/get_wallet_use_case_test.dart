@@ -19,7 +19,7 @@ void main() {
 
   test('Should get wallet balance from the repository', () async {
     when(() => mockWalletRepository.getWallet())
-        .thenAnswer((_) async => WalletDto(balance: 500, currency: 'PHP'));
+        .thenAnswer((_) async => const WalletDto(balance: 500, currency: 'PHP'));
     final result = await useCase();
     expect(result, const Wallet(balance: 500, currency: 'PHP'));
     verify(() => mockWalletRepository.getWallet());
