@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:money_send_app/src/core/configurations/app_widget_state_resolver.dart';
+import 'package:money_send_app/src/core/utilities/app_widget_state_resolver.dart';
 
 class SendMoneyButton extends StatelessWidget {
   const SendMoneyButton({super.key, this.isButtonEnabled = false});
