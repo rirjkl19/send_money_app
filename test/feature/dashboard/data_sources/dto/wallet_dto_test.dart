@@ -34,7 +34,7 @@ void main() {
     test('toEntity should correctly convert to Wallet entity', () {
       final entity = goldenStub.toEntity();
       expect(entity.balance, goldenStub.balance);
-      expect(entity.currency, goldenStub.currency);
+      expect(entity.currency.dtoName, goldenStub.currency);
     });
   });
 }

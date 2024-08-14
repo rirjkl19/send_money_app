@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:money_send_app/src/core/configurations/app_error.dart';
-import 'package:money_send_app/src/features/dashboard/data/data_sources/remote_data_source.dart';
+import 'package:money_send_app/src/features/dashboard/data/data_sources/wallet_data_source.dart';
 import 'package:money_send_app/src/features/dashboard/data/dto/wallet_dto.dart';
 import 'package:money_send_app/src/features/dashboard/domain/entities/wallet.dart';
 import 'package:money_send_app/src/features/dashboard/domain/repositories/wallet_repository.dart';
@@ -9,7 +9,7 @@ import 'package:money_send_app/src/features/dashboard/domain/repositories/wallet
 interface class IWalletRepository implements WalletRepository {
   const IWalletRepository({required this.remoteDataSource});
 
-  final RemoteDataSource remoteDataSource;
+  final WalletDataSource remoteDataSource;
 
   @override
   Future<WalletDto> getWallet() async {

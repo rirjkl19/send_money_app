@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:money_send_app/src/features/dashboard/domain/entities/currency.dart';
 import 'package:money_send_app/src/features/dashboard/domain/entities/wallet.dart';
 
 class WalletDto {
@@ -28,7 +29,7 @@ class WalletDto {
       WalletDto.fromMap(json.decode(source) as Map<String, dynamic>);
 
   Wallet toEntity() {
-    return Wallet(balance: balance, currency: currency);
+    return Wallet(balance: balance, currency: Currency.fromDto(currency));
   }
 
   @override

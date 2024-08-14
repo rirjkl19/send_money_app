@@ -2,19 +2,19 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:money_send_app/src/core/configurations/app_error.dart';
-import 'package:money_send_app/src/features/dashboard/data/data_sources/remote_data_source.dart';
+import 'package:money_send_app/src/features/dashboard/data/data_sources/wallet_data_source.dart';
 import 'package:money_send_app/src/features/dashboard/data/dto/wallet_dto.dart';
 import 'package:money_send_app/src/features/dashboard/data/repositories/i_wallet_repository.dart';
 
-class MockRemoteDataSource extends Mock implements RemoteDataSource {}
+class MockWalletDataSource extends Mock implements WalletDataSource {}
 
 void main() {
   const goldenStub = '{"balance": 500.00, "currency": "PHP"}';
-  late MockRemoteDataSource mockRemoteDataSource;
+  late MockWalletDataSource mockRemoteDataSource;
   late IWalletRepository mockWalletRepository;
 
   setUp(() {
-    mockRemoteDataSource = MockRemoteDataSource();
+    mockRemoteDataSource = MockWalletDataSource();
     mockWalletRepository = IWalletRepository(remoteDataSource: mockRemoteDataSource);
   });
 

@@ -2,6 +2,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:money_send_app/src/core/configurations/app_error.dart';
 import 'package:money_send_app/src/features/dashboard/data/dto/wallet_dto.dart';
+import 'package:money_send_app/src/features/dashboard/domain/entities/currency.dart';
 import 'package:money_send_app/src/features/dashboard/domain/entities/wallet.dart';
 import 'package:money_send_app/src/features/dashboard/domain/repositories/wallet_repository.dart';
 import 'package:money_send_app/src/features/dashboard/domain/usecases/get_wallet_use_case.dart';
@@ -21,7 +22,7 @@ void main() {
     when(() => mockWalletRepository.getWallet())
         .thenAnswer((_) async => const WalletDto(balance: 500, currency: 'PHP'));
     final result = await useCase();
-    expect(result, const Wallet(balance: 500, currency: 'PHP'));
+    expect(result, const Wallet(balance: 500, currency: Currency.php));
     verify(() => mockWalletRepository.getWallet());
     verifyNoMoreInteractions(mockWalletRepository);
   });

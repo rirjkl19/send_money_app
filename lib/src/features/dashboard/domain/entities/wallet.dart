@@ -1,8 +1,10 @@
+import 'package:money_send_app/src/features/dashboard/domain/entities/currency.dart';
+
 class Wallet {
   const Wallet({required this.balance, required this.currency});
 
   final double balance;
-  final String currency;
+  final Currency currency;
 
   @override
   bool operator ==(covariant Wallet other) {
