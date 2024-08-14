@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 import 'package:money_send_app/src/features/dashboard/domain/entities/currency.dart';
@@ -18,7 +17,7 @@ class WalletDto {
 
   factory WalletDto.fromMap(Map<String, dynamic> map) {
     return WalletDto(
-      balance: map['balance'] as double,
+      balance: (map['balance'] is int) ? map['balance'].toDouble() : map['balance'] as double,
       currency: map['currency'] as String,
     );
   }

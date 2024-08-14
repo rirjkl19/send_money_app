@@ -6,6 +6,8 @@ class Wallet {
   final double balance;
   final Currency currency;
 
+  String get balanceAsString => balance.toStringAsFixed(2);
+
   @override
   bool operator ==(covariant Wallet other) {
     if (identical(this, other)) return true;

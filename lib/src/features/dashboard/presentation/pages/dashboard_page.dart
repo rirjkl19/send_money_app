@@ -17,16 +17,23 @@ class DashboardPage extends StatelessWidget {
         title: const Text('Dashboard'),
       ),
       body: BlocBuilder<WalletCubit, WalletState>(
+        bloc: context.read<WalletCubit>()..getWallet(),
         builder: (context, state) {
-          return WalletCard(
-            balance: state.wallet?.balance.toString() ?? 'Loading',
-            currency: state.wallet?.currency.symbol ?? '',
-            onTapSendMoney: () {
-              Navigator.of(context).pushNamed(SendMoneyPage.routeName);
-            },
-            onTapViewTransactions: () {
-              Navigator.of(context).pushNamed(TransactionHistoryPage.routeName);
-            },
+          return Stack(
+            children: [
+              WalletCard(
+                isLoading: state.isLoading,
+                error: state is WalletError ? state.message : null,
+                balance: state.wallet?.balanceAsString ?? 'Loading',
+                currency: state.wallet?.currency.symbol ?? '',
+                onTapSendMoney: state.isLoading
+                    ? null
+                    : () => Navigator.of(context).pushNamed(SendMoneyPage.routeName),
+                onTapViewTransactions: state.isLoading
+                    ? null
+                    : () => Navigator.of(context).pushNamed(TransactionHistoryPage.routeName),
+              ),
+            ],
           );
         },
       ),

@@ -1,0 +1,30 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "money_send_app",
+            "request": "launch",
+            "type": "dart",
+            "showMemoryUsage": true,
+            "toolArgs": [
+                "--dart-define",
+                "BASE_URL=10.0.2.2:3000",
+            ]
+        },
+        {
+            "name": "money_send_app (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "money_send_app (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

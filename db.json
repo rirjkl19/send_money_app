@@ -1,6 +1,6 @@
 {
     "wallet": {
-        "balance": 500.00,
+        "balance": 500,
         "currency": "PHP"
     },
     "transactions": [

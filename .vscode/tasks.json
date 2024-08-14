@@ -2,8 +2,22 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"type": "process",
-			"command": "curl",
+			"label": "PURO: Run flutter 3.24",
+			"command": "puro",
+			"icon": {
+				"color": "terminal.ansiBlue"
+			},
+			"args": [
+				"flutter",
+				"run",
+				"--dart-define",
+				"BASE_URL=10.0.2.2:3000",
+			],
+			"problemMatcher": []
+		},
+		{
+			"type": "shell",
+			"command": "npx",
 			"args": [
 				"json-server",
 				"db.json"
@@ -13,7 +27,7 @@
 			},
 			"problemMatcher": [],
 			"label": "Run mocked JSON Server",
-			"detail": "This command will run the JSON Server associated with the db.json file"
+			"detail": "This command will run the JSON Server associated with the db.json file",
 		}
 	]
 }

@@ -9,7 +9,7 @@ import 'package:money_send_app/src/features/dashboard/data/repositories/i_wallet
 class MockWalletDataSource extends Mock implements WalletDataSource {}
 
 void main() {
-  const goldenStub = '{"balance": 500.00, "currency": "PHP"}';
+  const goldenStub = '{"balance": 500, "currency": "PHP"}';
   late MockWalletDataSource mockRemoteDataSource;
   late IWalletRepository mockWalletRepository;
 
@@ -21,7 +21,7 @@ void main() {
   test('Should get wallet balance from the repository', () async {
     when(() => mockRemoteDataSource.getWallet()).thenAnswer((_) async => Response(goldenStub, 200));
     final result = await mockWalletRepository.getWallet();
-    expect(result, const WalletDto(balance: 500, currency: 'PHP'));
+    expect(result, const WalletDto(balance: 500.0, currency: 'PHP'));
     verify(() => mockRemoteDataSource.getWallet());
     verifyNoMoreInteractions(mockRemoteDataSource);
   });

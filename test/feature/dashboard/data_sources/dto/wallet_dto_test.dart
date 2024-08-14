@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:money_send_app/src/features/dashboard/data/dto/wallet_dto.dart';
 
 void main() {
-  const goldenStub = WalletDto(balance: 100.0, currency: 'USD');
+  const goldenStub = WalletDto(balance: 100, currency: 'USD');
 
   group('WalletDto', () {
     test('toMap should return a correct map', () {
