@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:money_send_app/src/core/dto/user_dto.dart';
+import 'package:money_send_app/src/core/entities/user.dart';
 import 'package:money_send_app/src/features/dashboard/domain/entities/currency.dart';
 import 'package:money_send_app/src/features/transaction_history/data/dto/transaction_dto.dart';
 import 'package:money_send_app/src/features/transaction_history/domain/entities/transaction.dart';
@@ -28,7 +29,7 @@ void main() {
             amount: 100,
             currency: Currency.php,
             type: TransactionType.deposit,
-            sender: self,
+            source: self,
             receiver: const UserDto(id: '2', name: 'Jane Doe'),
             date: DateTime(2021, 1, 1),
           ),
@@ -37,7 +38,7 @@ void main() {
             amount: 200,
             currency: Currency.php,
             type: TransactionType.withdraw,
-            sender: const UserDto(id: '2', name: 'Jane Doe'),
+            source: const UserDto(id: '2', name: 'Jane Doe'),
             receiver: self,
             date: DateTime(2021, 1, 1),
           ),
@@ -46,7 +47,7 @@ void main() {
             amount: 100,
             currency: Currency.php,
             type: TransactionType.deposit,
-            sender: self,
+            source: self,
             receiver: const UserDto(id: '3', name: 'Jack Doe'),
             date: DateTime(2021, 1, 1),
           ),
@@ -58,8 +59,8 @@ void main() {
         amount: 100,
         currency: Currency.php,
         type: TransactionType.deposit,
-        senderName: self.name,
-        receiverName: 'Jane Doe',
+        source: self.toEntity(),
+        receiver: const User(id: '2', name: 'Jane Doe'),
         date: DateTime(2021, 1, 1),
       ),
       Transaction(
@@ -67,8 +68,8 @@ void main() {
         amount: 200,
         currency: Currency.php,
         type: TransactionType.withdraw,
-        senderName: 'Jane Doe',
-        receiverName: self.name,
+        source: const User(id: '2', name: 'Jane Doe'),
+        receiver: self.toEntity(),
         date: DateTime(2021, 1, 1),
       ),
       Transaction(
@@ -76,8 +77,8 @@ void main() {
         amount: 100,
         currency: Currency.php,
         type: TransactionType.deposit,
-        senderName: self.name,
-        receiverName: 'Jack Doe',
+        source: self.toEntity(),
+        receiver: const User(id: '3', name: 'Jack Doe'),
         date: DateTime(2021, 1, 1),
       )
     ]);

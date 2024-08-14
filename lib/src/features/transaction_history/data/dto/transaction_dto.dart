@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 import 'package:money_send_app/src/core/dto/user_dto.dart';
@@ -9,7 +8,7 @@ import 'package:money_send_app/src/features/transaction_history/domain/entities/
 class TransactionDto {
   final String id;
   final TransactionType type;
-  final UserDto sender;
+  final UserDto source;
   final UserDto receiver;
   final double amount;
   final Currency currency;
@@ -18,7 +17,7 @@ class TransactionDto {
   const TransactionDto({
     required this.id,
     required this.type,
-    required this.sender,
+    required this.source,
     required this.receiver,
     required this.amount,
     required this.currency,
@@ -29,7 +28,7 @@ class TransactionDto {
     return <String, dynamic>{
       'id': id,
       'type': type.name,
-      'sender': sender.toMap(),
+      'source': source.toMap(),
       'receiver': receiver.toMap(),
       'amount': amount,
       'currency': currency.toDtoName,
@@ -41,7 +40,7 @@ class TransactionDto {
     return TransactionDto(
       id: map['id'] as String,
       type: TransactionType.values.byName(map['type']),
-      sender: UserDto.fromMap(map['sender'] as Map<String, dynamic>),
+      source: UserDto.fromMap(map['source'] as Map<String, dynamic>),
       receiver: UserDto.fromMap(map['receiver'] as Map<String, dynamic>),
       amount: map['amount'] is int ? map['amount'].toDouble() : map['amount'] as double,
       currency: Currency.fromDto(map['currency']),
@@ -64,8 +63,8 @@ class TransactionDto {
     return Transaction(
       id: id,
       type: type,
-      senderName: sender.name,
-      receiverName: receiver.name,
+      source: source.toEntity(),
+      receiver: receiver.toEntity(),
       amount: amount,
       currency: currency,
       date: date,
@@ -78,7 +77,7 @@ class TransactionDto {
 
     return other.id == id &&
         other.type == type &&
-        other.sender == sender &&
+        other.source == source &&
         other.receiver == receiver &&
         other.amount == amount &&
         other.currency == currency &&
@@ -89,7 +88,7 @@ class TransactionDto {
   int get hashCode {
     return id.hashCode ^
         type.hashCode ^
-        sender.hashCode ^
+        source.hashCode ^
         receiver.hashCode ^
         amount.hashCode ^
         currency.hashCode ^

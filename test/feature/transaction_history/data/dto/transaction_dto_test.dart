@@ -14,7 +14,7 @@ void main() {
   final transactionStub = TransactionDto(
     id: 'txn123',
     type: TransactionType.deposit,
-    sender: senderStub,
+    source: senderStub,
     receiver: receiverStub,
     amount: 100,
     currency: Currency.php,
@@ -26,7 +26,7 @@ void main() {
       final expectedMap = {
         'id': 'txn123',
         'type': 'deposit',
-        'sender': senderStub.toMap(),
+        'source': senderStub.toMap(),
         'receiver': receiverStub.toMap(),
         'amount': 100.0,
         'currency': 'PHP',
@@ -40,7 +40,7 @@ void main() {
       final map = {
         'id': 'txn123',
         'type': 'deposit',
-        'sender': senderStub.toMap(),
+        'source': senderStub.toMap(),
         'receiver': receiverStub.toMap(),
         'amount': 100.0,
         'currency': 'PHP',
@@ -73,7 +73,7 @@ void main() {
       final anotherTransactionDto = TransactionDto(
         id: 'txn123',
         type: TransactionType.deposit,
-        sender: senderStub,
+        source: senderStub,
         receiver: receiverStub,
         amount: 100.0,
         currency: Currency.php,
@@ -87,8 +87,8 @@ void main() {
       final expectedEntity = Transaction(
         id: 'txn123',
         type: TransactionType.deposit,
-        senderName: 'John Doe',
-        receiverName: 'Jane Doe',
+        source: senderStub.toEntity(),
+        receiver: receiverStub.toEntity(),
         amount: 100.0,
         currency: Currency.php,
         date: DateTime.fromMillisecondsSinceEpoch(1633795200000),

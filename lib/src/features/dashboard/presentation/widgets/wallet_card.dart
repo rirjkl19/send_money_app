@@ -41,7 +41,6 @@ class _WalletCardState extends State<WalletCard> {
       elevation: 4,
       margin: const EdgeInsets.all(16),
       child: Stack(
-        fit: StackFit.passthrough,
         clipBehavior: Clip.antiAlias,
         children: [
           Padding(

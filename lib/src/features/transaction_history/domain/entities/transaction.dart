@@ -1,11 +1,12 @@
+import 'package:money_send_app/src/core/entities/user.dart';
 import 'package:money_send_app/src/features/dashboard/domain/entities/currency.dart';
 import 'package:money_send_app/src/features/transaction_history/domain/entities/transaction_type.dart';
 
 class Transaction {
   final String id;
   final TransactionType type;
-  final String senderName;
-  final String receiverName;
+  final User source;
+  final User receiver;
   final double amount;
   final Currency currency;
   final DateTime date;
@@ -13,12 +14,14 @@ class Transaction {
   const Transaction({
     required this.id,
     required this.type,
-    required this.senderName,
-    required this.receiverName,
+    required this.source,
+    required this.receiver,
     required this.amount,
     required this.currency,
     required this.date,
   });
+
+  String get amountLabel => '${currency.symbol}$amount';
 
   @override
   bool operator ==(covariant Transaction other) {
@@ -26,8 +29,8 @@ class Transaction {
 
     return other.id == id &&
         other.type == type &&
-        other.senderName == senderName &&
-        other.receiverName == receiverName &&
+        other.source == source &&
+        other.receiver == receiver &&
         other.amount == amount &&
         other.currency == currency &&
         other.date == date;
@@ -37,8 +40,8 @@ class Transaction {
   int get hashCode {
     return id.hashCode ^
         type.hashCode ^
-        senderName.hashCode ^
-        receiverName.hashCode ^
+        source.hashCode ^
+        receiver.hashCode ^
         amount.hashCode ^
         currency.hashCode ^
         date.hashCode;
