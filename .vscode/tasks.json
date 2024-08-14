@@ -1,0 +1,19 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "process",
+			"command": "curl",
+			"args": [
+				"json-server",
+				"db.json"
+			],
+			"icon": {
+				"color": "terminal.ansiGreen"
+			},
+			"problemMatcher": [],
+			"label": "Run mocked JSON Server",
+			"detail": "This command will run the JSON Server associated with the db.json file"
+		}
+	]
+}
