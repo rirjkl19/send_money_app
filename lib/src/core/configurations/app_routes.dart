@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:money_send_app/src/core/generic_pages/invalid_page.dart';
+import 'package:money_send_app/src/core/pages/invalid_page.dart';
 import 'package:money_send_app/src/features/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:money_send_app/src/features/send_money/presentation/pages/send_money_page.dart';
 import 'package:money_send_app/src/features/transaction_history/presentation/pages/transaction_history_page.dart';
