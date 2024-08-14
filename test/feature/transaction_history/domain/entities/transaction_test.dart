@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:money_send_app/src/core/entities/user.dart';
 import 'package:money_send_app/src/features/dashboard/domain/entities/currency.dart';
 import 'package:money_send_app/src/features/transaction_history/domain/entities/transaction.dart';
 import 'package:money_send_app/src/features/transaction_history/domain/entities/transaction_type.dart';
@@ -13,8 +12,8 @@ void main() {
         amount: 100,
         type: TransactionType.deposit,
         currency: Currency.php,
-        receiver: const User(id: '1', name: 'John Doe'),
-        sender: const User(id: '2', name: 'Jane Doe'),
+        receiverName: 'John Doe',
+        senderName: 'Jane Doe',
         date: date,
       );
 
@@ -22,8 +21,8 @@ void main() {
       expect(transaction.amount, 100);
       expect(transaction.type, TransactionType.deposit);
       expect(transaction.currency, Currency.php);
-      expect(transaction.receiver, const User(id: '1', name: 'John Doe'));
-      expect(transaction.sender, const User(id: '2', name: 'Jane Doe'));
+      expect(transaction.receiverName, 'John Doe');
+      expect(transaction.senderName, 'Jane Doe');
       expect(transaction.date, date);
     });
   });

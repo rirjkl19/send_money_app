@@ -14,8 +14,8 @@ final class AppRoutes {
         return MaterialPageRoute(builder: (_) => const DashboardPage());
       case SendMoneyPage.routeName:
         return MaterialPageRoute(builder: (_) => const SendMoneyPage());
-      case TransactionHistoryPage.routeName:
-        return MaterialPageRoute(builder: (_) => const TransactionHistoryPage());
+      case TransactionsPage.routeName:
+        return MaterialPageRoute(builder: (_) => const TransactionsPage());
       default:
         return MaterialPageRoute(builder: (_) => const InvalidPage());
     }

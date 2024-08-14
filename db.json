@@ -15,9 +15,9 @@
                 "id": "9dbda536-1d23-4162-a284-2fb6c628fbba",
                 "name": "Cancer Foundation"
             },
-            "amount": 1000,
+            "amount": 1000.0,
             "currency": "PHP",
-            "date": "2021-01-01T00:00:00.000Z"
+            "date": 1633795200000
         },
         {
             "id": "8c4ac49e-f42b-416a-84ab-072d438c0f49",
@@ -30,9 +30,9 @@
                 "id": "6d4e9aa4-4756-467b-ba95-a51dd804b4a4",
                 "name": "You"
             },
-            "amount": 500,
+            "amount": 500.0,
             "currency": "PHP",
-            "date": "2021-01-02T00:00:00.000Z"
+            "date": 1633795200000
         }
     ]
 }

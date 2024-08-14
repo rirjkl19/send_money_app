@@ -2,12 +2,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:money_send_app/src/features/dashboard/data/dto/wallet_dto.dart';
 
 void main() {
-  const goldenStub = WalletDto(balance: 100, currency: 'USD');
+  const walletStub = WalletDto(balance: 100, currency: 'USD');
 
   group('WalletDto', () {
     test('toMap should return a correct map', () {
       final expectedMap = {'balance': 100.0, 'currency': 'USD'};
-      final result = goldenStub.toMap();
+      final result = walletStub.toMap();
       expect(result, expectedMap);
     });
 
@@ -20,7 +20,7 @@ void main() {
 
     test('toJson should return a correct JSON string', () {
       const json = '{"balance":100.0,"currency":"USD"}';
-      final result = goldenStub.toJson();
+      final result = walletStub.toJson();
       expect(result, json);
     });
 
@@ -32,9 +32,9 @@ void main() {
     });
 
     test('toEntity should correctly convert to Wallet entity', () {
-      final entity = goldenStub.toEntity();
-      expect(entity.balance, goldenStub.balance);
-      expect(entity.currency.dtoName, goldenStub.currency);
+      final entity = walletStub.toEntity();
+      expect(entity.balance, walletStub.balance);
+      expect(entity.currency.toDtoName, walletStub.currency);
     });
   });
 }

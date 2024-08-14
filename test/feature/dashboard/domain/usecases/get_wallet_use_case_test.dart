@@ -15,7 +15,7 @@ void main() {
 
   setUp(() {
     mockWalletRepository = MockWalletRepository();
-    useCase = GetWalletUseCase(walletRepository: mockWalletRepository);
+    useCase = GetWalletUseCase(mockWalletRepository);
   });
 
   test('Should get wallet balance from the repository', () async {

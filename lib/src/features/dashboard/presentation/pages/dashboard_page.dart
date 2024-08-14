@@ -31,7 +31,7 @@ class DashboardPage extends StatelessWidget {
                     : () => Navigator.of(context).pushNamed(SendMoneyPage.routeName),
                 onTapViewTransactions: state.isLoading
                     ? null
-                    : () => Navigator.of(context).pushNamed(TransactionHistoryPage.routeName),
+                    : () => Navigator.of(context).pushNamed(TransactionsPage.routeName),
               ),
             ],
           );

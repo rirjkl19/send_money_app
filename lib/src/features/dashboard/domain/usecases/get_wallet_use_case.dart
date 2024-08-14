@@ -4,7 +4,7 @@ import 'package:money_send_app/src/features/dashboard/domain/repositories/wallet
 class GetWalletUseCase {
   final WalletRepository walletRepository;
 
-  GetWalletUseCase({required this.walletRepository});
+  GetWalletUseCase(this.walletRepository);
 
   Future<Wallet> call() async {
     final response = await walletRepository.getWallet();

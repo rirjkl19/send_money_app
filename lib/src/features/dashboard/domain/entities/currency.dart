@@ -6,7 +6,7 @@ enum Currency {
 
   const Currency({required this.symbol});
 
-  String get dtoName {
+  String get toDtoName {
     switch (this) {
       case Currency.php:
         return 'PHP';
