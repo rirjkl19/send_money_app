@@ -44,7 +44,7 @@ class DashboardPage extends StatelessWidget {
                   Expanded(
                     child: MaterialButton(
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                      color: Theme.of(context).colorScheme.secondary,
+                      color: Theme.of(context).colorScheme.primary,
                       onPressed: () {
                         Navigator.of(context).pushNamed(SendMoneyPage.routeName);
                       },
@@ -58,7 +58,7 @@ class DashboardPage extends StatelessWidget {
                   Expanded(
                     child: MaterialButton(
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                      color: Theme.of(context).colorScheme.secondary,
+                      color: Theme.of(context).colorScheme.primary,
                       onPressed: () {
                         Navigator.of(context).pushNamed(TransactionHistoryPage.routeName);
                       },

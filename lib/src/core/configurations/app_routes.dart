@@ -5,6 +5,8 @@ import 'package:money_send_app/src/features/send_money/presentation/pages/send_m
 import 'package:money_send_app/src/features/transaction_history/presentation/pages/transaction_history_page.dart';
 
 final class AppRoutes {
+  const AppRoutes._();
+
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     // final Object? args = settings.arguments;
     switch (settings.name) {
