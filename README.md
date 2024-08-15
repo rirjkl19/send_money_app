@@ -9,6 +9,10 @@ Flutter manager used: puro
 
 ## How to Run
 
+To
+
+
+
 To run the **Money Send App** project, follow these steps:
 
 1. Install the required dependencies:
@@ -29,26 +33,26 @@ To run the **Money Send App** project, follow these steps:
 
 - **Wallet Balance**
 
-  - [ ] View the current balance in the wallet.
-  - [ ] Show 500.00php as user's current balance.
-  - [ ] Ability to show and hide the balance
+  - [X] View the current balance in the wallet.
+  - [X] Show 500.00php as user's current balance.
+  - [X] Ability to show and hide the balance
 
 - **Send Money**
 
-  - [ ] Input field that accepts numbers.
-  - [ ] Bottom sheet on success/error indicator on transaction response
-  - [ ] Send money to another user by entering the amount
+  - [X] Input field that accepts numbers.
+  - [X] Bottom sheet on success/error indicator on transaction response
+  - [X] Send money to another user by entering the amount
 
 - **Transaction History**
-  - [ ] View the transaction history of the wallet
-  - [ ] Show details like the amount send and timestamp
+  - [X] View the transaction history of the wallet
+  - [X] Show details like the amount send and timestamp
 
 ## Technical
 
-- [ ] Unit Test
-- [ ] Uses fake API <https://jsonplaceholder.typicode.com/>
-- [ ] Clean architecture with flutter_bloc
-- [ ] Uses flutter
+- [X] Unit Test
+- [X] Uses fake API <https://jsonplaceholder.typicode.com/>
+- [X] Clean architecture with flutter_bloc
+- [X] Uses flutter
 
 ## Contact
 

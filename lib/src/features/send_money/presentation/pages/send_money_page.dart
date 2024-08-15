@@ -85,6 +85,7 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
                   SendTransactionFailedDialog(
                     accountNumber: _recipientController.text,
                     amountSent: _amountController.text,
+                    error: state.message,
                     onDone: Navigator.of(context).pop,
                   ).showAsModalBottomSheet(context, isDismissible: false);
                   break;
@@ -114,7 +115,7 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
                         return MoneyInputField(
                           enabled: !sendState.isLoading,
                           controller: _amountController,
-                          prefix: Text('//${_currency.symbol} '),
+                          prefix: Text(_currency.symbol),
                           wallet: walletState.wallet,
                         );
                       },

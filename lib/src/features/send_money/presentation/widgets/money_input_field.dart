@@ -40,13 +40,14 @@ class MoneyInputField extends StatelessWidget {
               return 'Amount is required. You have ${wallet?.balanceLabel}';
             }
             if (value!.isEmpty) return 'Please enter an amount.';
+            if (wallet?.balance == 0) return 'You have insufficient balance.';
             if (wallet != null && double.parse(value) > wallet!.balance) {
               return 'You only have ${wallet?.balanceLabel} in your wallet.';
             }
             return null;
           },
       decoration: InputDecoration(
-        prefix: const Text('₱ '),
+        prefix: wallet == null ? null : Text(wallet!.currency.symbol),
         prefixStyle: const TextStyle(color: Colors.black),
         contentPadding: const EdgeInsets.symmetric(horizontal: 16),
         labelText: labelText,

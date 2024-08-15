@@ -48,7 +48,7 @@ void main() {
   );
 
   group('SendMoneyUseCase', () {
-    setUpAll(() {
+    setUp(() {
       transactionRepository = MockTransactionRepository();
       userRepository = MockUserRepository();
       walletRepository = MockWalletRepository();
@@ -76,6 +76,38 @@ void main() {
         walletRepository: walletRepository,
       );
     });
+
+    test('should throw AppError when amount is less than or equal to 0', () {
+      final args = SendMoneyArgs(
+        accountNumber: '2',
+        amount: 0.00,
+        currency: Currency.php,
+      );
+
+      expect(useCase(args), throwsA(isA<AppError>()));
+      verifyNoMoreInteractions(transactionRepository);
+    });
+
+    test('should throw AppError when user is not found', () async {
+      when(() => userRepository.getCurrentUser())
+          .thenAnswer((_) async => UserDto(id: '1', name: 'John Doe', walletId: '1'));
+      when(() => userRepository.getUser(sendMoneyArgs.accountNumber)).thenAnswer((_) async => null);
+
+      expect(useCase(sendMoneyArgs), throwsA(isA<AppError>()));
+      verifyNoMoreInteractions(transactionRepository);
+    });
+
+    test('should throw AppError when sending money to self', () async {
+      when(() => userRepository.getCurrentUser())
+          .thenAnswer((_) async => UserDto(id: '1', name: 'John Doe', walletId: '1'));
+      when(() => userRepository.getUser(sendMoneyArgs.accountNumber))
+          .thenAnswer((_) async => UserDto(id: '1', name: 'John Doe', walletId: '1'));
+
+      expect(useCase(sendMoneyArgs), throwsA(isA<AppError>()));
+      verify(() => userRepository.getCurrentUser()).called(1);
+      verifyNoMoreInteractions(userRepository);
+    });
+
     test('should send money to recipient', () async {
       when(() => userRepository.getCurrentUser())
           .thenAnswer((_) async => UserDto(id: '1', name: 'John Doe', walletId: '1'));
@@ -90,13 +122,15 @@ void main() {
 
       final result = await useCase(sendMoneyArgs);
 
-      expect(result, stubTransactionResponse);
       verify(() => userRepository.getCurrentUser()).called(1);
       verify(() => userRepository.getUser(sendMoneyArgs.accountNumber)).called(1);
       verify(() => transactionRepository.sendMoney(any())).called(1);
       verify(() => walletRepository.getWallet('1')).called(1);
       verify(() => walletRepository.updateWallet(any())).called(1);
+      expect(result, stubTransactionResponse);
       verifyNoMoreInteractions(transactionRepository);
+      verifyNoMoreInteractions(walletRepository);
+      verifyNoMoreInteractions(userRepository);
     });
 
     test('should return AppError upon failure to send money ', () async {

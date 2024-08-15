@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:money_send_app/src/core/configurations/app_error.dart';
 import 'package:money_send_app/src/features/dashboard/domain/entities/currency.dart';
 import 'package:money_send_app/src/features/send_money/domain/entities/send_money_args.dart';
 import 'package:money_send_app/src/features/send_money/domain/usecases/send_money_use_case.dart';
@@ -29,6 +30,8 @@ class SendMoneyCubit extends Cubit<SendMoneyState> {
         ),
       );
       emit(SendMoneySuccess(transaction: transactionResponse));
+    } on AppError catch (e) {
+      emit(SendMoneyFailure(e.message));
     } catch (e) {
       emit(SendMoneyFailure(e.toString()));
     }

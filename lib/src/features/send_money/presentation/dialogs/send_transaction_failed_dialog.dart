@@ -8,11 +8,13 @@ class SendTransactionFailedDialog extends StatelessWidget with AppDialogHelper {
     this.onDone,
     required this.accountNumber,
     required this.amountSent,
+    this.error = 'An error occurred while sending money',
   });
 
   final String amountSent;
   final String accountNumber;
   final VoidCallback? onDone;
+  final String error;
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +33,7 @@ class SendTransactionFailedDialog extends StatelessWidget with AppDialogHelper {
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 12),
-              const Text(
-                'You might have entered a wrong account number',
-                textAlign: TextAlign.center,
-              ),
+              Text(error, textAlign: TextAlign.center),
               const SizedBox(height: 12),
               SizedBox(
                 height: 54,

@@ -24,10 +24,10 @@ interface class IUserRepository implements UserRepository {
   }
 
   @override
-  Future<UserDto> getUser(String userId) async {
+  Future<UserDto?> getUser(String userId) async {
     try {
       final response = await remoteUserDataSource.getUser(userId);
-      if (response.statusCode == 404) throw AppError(message: 'User not found');
+      if (response.statusCode == 404) return null;
       return UserDto.fromJson(response.body);
     } catch (e) {
       throw AppError(message: 'Failed to get user');

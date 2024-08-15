@@ -26,17 +26,25 @@ class SendMoneyUseCase {
 
   /// Sends money to the recipient.
   Future<Transaction> call(SendMoneyArgs params) async {
+    if (params.amount <= 0) {
+      throw AppError(message: 'Amount must be greater than 0');
+    }
+
     final currentUser = await userRepository.getCurrentUser();
+
     final user = await userRepository.getUser(params.accountNumber);
+    if (user == null) {
+      throw AppError(message: 'You might have entered a wrong account number');
+    }
 
     if (currentUser.id == user.id) {
-      throw AppError(message: 'Cannot send money to yourself');
+      throw AppError(message: 'Cannot send money to self');
     }
 
     final transaction = await transactionRepository.sendMoney(
       TransactionDto(
         id: params.hashCode.toString(),
-        type: TransactionType.deposit,
+        type: TransactionType.withdraw,
         source: currentUser,
         receiver: user,
         amount: params.amount,
