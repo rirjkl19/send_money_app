@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:money_send_app/src/features/dashboard/domain/entities/currency.dart';
-import 'package:money_send_app/src/features/dashboard/domain/repositories/wallet_repository.dart';
+import 'package:money_send_app/src/features/dashboard/domain/repositories/user_repository.dart';
 import 'package:money_send_app/src/features/dashboard/presentation/bloc/wallet_cubit.dart';
 import 'package:money_send_app/src/features/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:money_send_app/src/features/send_money/domain/usecases/send_money_use_case.dart';
-import 'package:money_send_app/src/features/send_money/presentation/bloc/send_money_bloc.dart';
+import 'package:money_send_app/src/features/send_money/presentation/bloc/send_money_cubit.dart';
 import 'package:money_send_app/src/features/send_money/presentation/dialogs/send_transaction_failed_dialog.dart';
 import 'package:money_send_app/src/features/send_money/presentation/dialogs/send_transaction_success_dialog.dart';
 import 'package:money_send_app/src/features/send_money/presentation/widgets/money_input_field.dart';
 import 'package:money_send_app/src/features/send_money/presentation/widgets/recipient_input_field.dart';
 import 'package:money_send_app/src/features/send_money/presentation/widgets/send_money_button.dart';
+import 'package:money_send_app/src/features/transaction_history/domain/repositories/transaction_repository.dart';
+import 'package:money_send_app/src/features/transaction_history/presentation/bloc/transaction_list_bloc.dart';
 
 class SendMoneyPage extends StatefulWidget {
   const SendMoneyPage({super.key});
@@ -40,8 +42,10 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
   Widget build(BuildContext context) {
     return BlocProvider<SendMoneyCubit>(
       create: (context) {
-        final repository = RepositoryProvider.of<WalletRepository>(context);
-        final sendMoneyUseCase = SendMoneyUseCase(repository);
+        final sendMoneyUseCase = SendMoneyUseCase(
+          userRepository: context.read<UserRepository>(),
+          transactionRepository: context.read<TransactionRepository>(),
+        );
         return SendMoneyCubit(sendMoneyUseCase);
       },
       child: Scaffold(
@@ -52,6 +56,8 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
             listener: (context, state) {
               switch (state) {
                 case SendMoneySuccess():
+                  context.read<WalletCubit>().getWallet();
+                  context.read<TransactionListCubit>().getTransactions();
                   SendTransactionSuccessDialog(
                     accountNumber: state.transaction.receiver.name,
                     amountSent: state.transaction.amountLabel,
@@ -61,11 +67,13 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
                   ).showAsModalBottomSheet(context, isDismissible: false);
                   break;
                 case SendMoneyFailure():
+                  context.read<WalletCubit>().getWallet();
                   SendTransactionFailedDialog(
                     accountNumber: _recipientController.text,
                     amountSent: _amountController.text,
                     onDone: Navigator.of(context).pop,
                   ).showAsModalBottomSheet(context, isDismissible: false);
+                  break;
                 default:
               }
             },

@@ -2,4 +2,5 @@ import 'package:money_send_app/src/features/transaction_history/data/dto/transac
 
 abstract interface class TransactionRepository {
   Future<List<TransactionDto>> getTransactions();
+  Future<TransactionDto> sendMoney(TransactionDto transactionDto);
 }

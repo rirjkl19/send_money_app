@@ -6,7 +6,7 @@ class AccountNumberInputField extends StatelessWidget {
     super.key,
     this.controller,
     this.label = 'Account Number',
-    this.hint = 'ex. 123456789',
+    this.hint = 'ex. 123',
     this.enabled = true,
   });
 

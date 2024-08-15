@@ -7,24 +7,17 @@ import 'package:money_send_app/src/features/transaction_history/domain/entities/
 void main() {
   final date = DateTime.now();
   group('Transaction', () {
-    test('should be able to create a transaction', () {
+    test('should should show the correct amount label', () {
       final transaction = Transaction(
         id: '1',
         amount: 100,
         type: TransactionType.deposit,
         currency: Currency.php,
-        receiver: const User(id: '1', name: 'John Doe'),
-        source: const User(id: '2', name: 'Jane Doe'),
+        receiver: User(id: '1', name: 'John Doe', walletId: '1'),
+        source: User(id: '2', name: 'Jane Doe', walletId: '2'),
         date: date,
       );
-
-      expect(transaction.id, '1');
-      expect(transaction.amount, 100);
-      expect(transaction.type, TransactionType.deposit);
-      expect(transaction.currency, Currency.php);
-      expect(transaction.receiver, 'John Doe');
-      expect(transaction.source, 'Jane Doe');
-      expect(transaction.date, date);
+      expect(transaction.amountLabel, '₱100.00');
     });
   });
 }

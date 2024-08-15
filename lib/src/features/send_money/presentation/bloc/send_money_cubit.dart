@@ -22,7 +22,7 @@ class SendMoneyCubit extends Cubit<SendMoneyState> {
         return;
       }
       await Future.delayed(const Duration(seconds: 2));
-      final transactionResponse = await _sendMoneyUseCase.mockSendMoney(
+      final transactionResponse = await _sendMoneyUseCase(
         SendMoneyArgs(accountNumber: accountNumber, amount: amount, currency: currency),
       );
       emit(SendMoneySuccess(transaction: transactionResponse));

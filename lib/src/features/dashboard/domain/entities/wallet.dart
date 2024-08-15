@@ -1,9 +1,11 @@
 import 'package:intl/intl.dart';
+
 import 'package:money_send_app/src/features/dashboard/domain/entities/currency.dart';
 
 class Wallet {
-  const Wallet({required this.balance, required this.currency});
+  const Wallet({required this.id, required this.balance, required this.currency});
 
+  final String id;
   final double balance;
   final Currency currency;
 
@@ -12,9 +14,10 @@ class Wallet {
   @override
   bool operator ==(covariant Wallet other) {
     if (identical(this, other)) return true;
-    return other.balance == balance && other.currency == currency;
+
+    return other.id == id && other.balance == balance && other.currency == currency;
   }
 
   @override
-  int get hashCode => balance.hashCode ^ currency.hashCode;
+  int get hashCode => id.hashCode ^ balance.hashCode ^ currency.hashCode;
 }

@@ -19,4 +19,14 @@ interface class ITransactionRepository implements TransactionRepository {
       throw AppError(message: 'Failed to get transactions');
     }
   }
+
+  @override
+  Future<TransactionDto> sendMoney(TransactionDto transaction) async {
+    try {
+      final response = await transactionDataSource.sendMoney(transaction);
+      return TransactionDto.fromJson(response.body);
+    } catch (e) {
+      throw AppError(message: 'Failed to send money');
+    }
+  }
 }

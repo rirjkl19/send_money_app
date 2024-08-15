@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:money_send_app/src/core/dto/user_dto.dart';
+import 'package:money_send_app/src/features/dashboard/data/dto/user_dto.dart';
 import 'package:money_send_app/src/features/dashboard/domain/entities/currency.dart';
 import 'package:money_send_app/src/features/transaction_history/domain/entities/transaction.dart';
 import 'package:money_send_app/src/features/transaction_history/domain/entities/transaction_type.dart';

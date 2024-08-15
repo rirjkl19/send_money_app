@@ -4,12 +4,14 @@ import 'package:money_send_app/src/features/dashboard/domain/entities/currency.d
 import 'package:money_send_app/src/features/dashboard/domain/entities/wallet.dart';
 
 class WalletDto {
-  const WalletDto({required this.balance, required this.currency});
+  const WalletDto({required this.id, required this.balance, required this.currency});
+  final String id;
   final double balance;
   final String currency;
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'id': id,
       'balance': balance,
       'currency': currency,
     };
@@ -17,7 +19,8 @@ class WalletDto {
 
   factory WalletDto.fromMap(Map<String, dynamic> map) {
     return WalletDto(
-      balance: (map['balance'] is int) ? map['balance'].toDouble() : map['balance'] as double,
+      id: map['id'] as String,
+      balance: map['balance'] is int ? map['balance'].toDouble() : map['balance'] as double,
       currency: map['currency'] as String,
     );
   }
@@ -28,16 +31,16 @@ class WalletDto {
       WalletDto.fromMap(json.decode(source) as Map<String, dynamic>);
 
   Wallet toEntity() {
-    return Wallet(balance: balance, currency: Currency.fromDto(currency));
+    return Wallet(id: id, balance: balance, currency: Currency.fromDto(currency));
   }
 
   @override
   bool operator ==(covariant WalletDto other) {
     if (identical(this, other)) return true;
 
-    return other.balance == balance && other.currency == currency;
+    return other.id == id && other.balance == balance && other.currency == currency;
   }
 
   @override
-  int get hashCode => balance.hashCode ^ currency.hashCode;
+  int get hashCode => id.hashCode ^ balance.hashCode ^ currency.hashCode;
 }

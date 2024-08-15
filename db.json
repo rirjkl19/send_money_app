@@ -1,26 +1,28 @@
 {
-    "wallet": {
-        "balance": 999999,
-        "currency": "PHP"
-    },
-    "send-money": {
-        "id": "e5f3ab16-43d4-49f8-bb34-3187d2916b1c",
-        "transaction": {
-            "id": "d3c6a4a7-ae61-4df9-8a89-10bcdefd57bc",
-            "type": "deposit",
-            "source": {
-                "id": "6d4e9aa4-4756-467b-ba95-a51dd804b4a4",
-                "name": "Personal Account"
-            },
-            "receiver": {
-                "id": "9dbda536-1d23-4162-a284-2fb6c628fbba",
-                "name": "Someones Account"
-            },
-            "amount": 500.0,
-            "currency": "PHP",
-            "date": 1633795200000
+    "users": [
+        {
+            "id": "123",
+            "walletId": "54a6cbaa-e0a2-4e08-81e5-1b66df0e81e1",
+            "name": "John Doe"
+        },
+        {
+            "id": "456",
+            "walletId": "19810573-ed3a-4f11-acbc-e8922d3bae47",
+            "name": "Jane Doe"
         }
-    },
+    ],
+    "wallets": [
+        {
+            "id": "54a6cbaa-e0a2-4e08-81e5-1b66df0e81e1",
+            "balance": 500,
+            "currency": "PHP"
+        },
+        {
+            "id": "19810573-ed3a-4f11-acbc-e8922d3bae47",
+            "balance": 1000,
+            "currency": "PHP"
+        }
+    ],
     "transactions": [
         {
             "id": "9703c20b-7032-4f4d-80c1-acbd6e1eaafd",
@@ -33,7 +35,7 @@
                 "id": "9dbda536-1d23-4162-a284-2fb6c628fbba",
                 "name": "Bank"
             },
-            "amount": 500.0,
+            "amount": 500,
             "currency": "PHP",
             "date": 1633795200000
         },
@@ -48,7 +50,7 @@
                 "id": "6d4e9aa4-4756-467b-ba95-a51dd804b4a4",
                 "name": "Government"
             },
-            "amount": 500.0,
+            "amount": 500,
             "currency": "PHP",
             "date": 1633795200000
         },
@@ -63,7 +65,7 @@
                 "id": "9dbda536-1d23-4162-a284-2fb6c628fbba",
                 "name": "Bank"
             },
-            "amount": 2000.0,
+            "amount": 2000,
             "currency": "PHP",
             "date": 1633795200000
         },
@@ -78,7 +80,7 @@
                 "id": "6d4e9aa4-4756-467b-ba95-a51dd804b4a4",
                 "name": "Personal Account"
             },
-            "amount": 750.0,
+            "amount": 750,
             "currency": "PHP",
             "date": 1633795200000
         },
@@ -93,7 +95,7 @@
                 "id": "9dbda536-1d23-4162-a284-2fb6c628fbba",
                 "name": "Bank"
             },
-            "amount": 1500.0,
+            "amount": 1500,
             "currency": "PHP",
             "date": 1633795200000
         },
@@ -108,7 +110,7 @@
                 "id": "6d4e9aa4-4756-467b-ba95-a51dd804b4a4",
                 "name": "Personal Account"
             },
-            "amount": 300.0,
+            "amount": 300,
             "currency": "PHP",
             "date": 1633795200000
         },
@@ -123,7 +125,7 @@
                 "id": "9dbda536-1d23-4162-a284-2fb6c628fbba",
                 "name": "Bank"
             },
-            "amount": 800.0,
+            "amount": 800,
             "currency": "PHP",
             "date": 1633795200000
         },
@@ -138,7 +140,7 @@
                 "id": "6d4e9aa4-4756-467b-ba95-a51dd804b4a4",
                 "name": "Personal Account"
             },
-            "amount": 1000.0,
+            "amount": 1000,
             "currency": "PHP",
             "date": 1633795200000
         },
@@ -153,7 +155,7 @@
                 "id": "9dbda536-1d23-4162-a284-2fb6c628fbba",
                 "name": "Bank"
             },
-            "amount": 1200.0,
+            "amount": 1200,
             "currency": "PHP",
             "date": 1633795200000
         },
@@ -168,7 +170,7 @@
                 "id": "6d4e9aa4-4756-467b-ba95-a51dd804b4a4",
                 "name": "Personal Account"
             },
-            "amount": 250.0,
+            "amount": 250,
             "currency": "PHP",
             "date": 1633795200000
         },
@@ -183,7 +185,7 @@
                 "id": "9dbda536-1d23-4162-a284-2fb6c628fbba",
                 "name": "Bank"
             },
-            "amount": 1800.0,
+            "amount": 1800,
             "currency": "PHP",
             "date": 1633795200000
         },
@@ -198,7 +200,7 @@
                 "id": "6d4e9aa4-4756-467b-ba95-a51dd804b4a4",
                 "name": "Personal Account"
             },
-            "amount": 400.0,
+            "amount": 400,
             "currency": "PHP",
             "date": 1633795200000
         },
@@ -213,7 +215,7 @@
                 "id": "9dbda536-1d23-4162-a284-2fb6c628fbba",
                 "name": "Bank"
             },
-            "amount": 600.0,
+            "amount": 600,
             "currency": "PHP",
             "date": 1633795200000
         }

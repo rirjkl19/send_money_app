@@ -1,6 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:money_send_app/src/features/dashboard/data/data_sources/wallet_data_source.dart';
+import 'package:money_send_app/src/features/dashboard/data/data_sources/mock_user_data_source.dart';
+import 'package:money_send_app/src/features/dashboard/data/data_sources/remote_user_data_source.dart';
+import 'package:money_send_app/src/features/dashboard/data/data_sources/remote_wallet_data_source.dart';
+import 'package:money_send_app/src/features/dashboard/data/repositories/i_user_repository.dart';
 import 'package:money_send_app/src/features/dashboard/data/repositories/i_wallet_repository.dart';
 import 'package:money_send_app/src/features/dashboard/domain/repositories/wallet_repository.dart';
 import 'package:money_send_app/src/features/dashboard/domain/usecases/get_wallet_use_case.dart';
@@ -21,12 +24,19 @@ class AppBlocWrapper extends StatefulWidget {
 }
 
 class _AppBlocWrapperState extends State<AppBlocWrapper> {
-  late final _walletDataSource = WalletDataSource();
+  late final _mockUserDataSource = MockUserDataSource();
+  late final _userDataSource = RemoteUserDataSource();
+  late final _walletDataSource = RemoteWalletDataSource();
   late final _transactionDataSource = TransactionDataSource();
 
+  late final _userRepository = IUserRepository(
+    mockUserDataSource: _mockUserDataSource,
+    remoteUserDataSource: _userDataSource,
+  );
   late final _walletRepository = IWalletRepository(walletDataSource: _walletDataSource);
-  late final _transactionRepository =
-      ITransactionRepository(transactionDataSource: _transactionDataSource);
+  late final _transactionRepository = ITransactionRepository(
+    transactionDataSource: _transactionDataSource,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +49,10 @@ class _AppBlocWrapperState extends State<AppBlocWrapper> {
         providers: [
           BlocProvider(
             create: (_) => WalletCubit(
-              getWalletUseCase: GetWalletUseCase(_walletRepository),
+              getWalletUseCase: GetWalletUseCase(
+                userRepository: _userRepository,
+                walletRepository: _walletRepository,
+              ),
             ),
           ),
           BlocProvider(
