@@ -7,15 +7,18 @@ class AccountNumberInputField extends StatelessWidget {
     this.controller,
     this.label = 'Account Number',
     this.hint = 'ex. 123456789',
+    this.enabled = true,
   });
 
   final TextEditingController? controller;
   final String label;
   final String hint;
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      enabled: enabled,
       controller: controller,
       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
       decoration: InputDecoration(

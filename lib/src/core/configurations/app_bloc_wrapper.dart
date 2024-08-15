@@ -4,7 +4,7 @@ import 'package:money_send_app/src/features/dashboard/data/data_sources/wallet_d
 import 'package:money_send_app/src/features/dashboard/data/repositories/i_wallet_repository.dart';
 import 'package:money_send_app/src/features/dashboard/domain/repositories/wallet_repository.dart';
 import 'package:money_send_app/src/features/dashboard/domain/usecases/get_wallet_use_case.dart';
-import 'package:money_send_app/src/features/dashboard/presentation/bloc/wallet_bloc.dart';
+import 'package:money_send_app/src/features/dashboard/presentation/bloc/wallet_cubit.dart';
 import 'package:money_send_app/src/features/transaction_history/data/data_sources/transaction_data_source.dart';
 import 'package:money_send_app/src/features/transaction_history/data/repositories/i_transaction_repository.dart';
 import 'package:money_send_app/src/features/transaction_history/domain/repositories/transaction_repository.dart';

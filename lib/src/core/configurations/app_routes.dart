@@ -11,13 +11,13 @@ final class AppRoutes {
     // final Object? args = settings.arguments;
     switch (settings.name) {
       case DashboardPage.routeName:
-        return MaterialPageRoute(builder: (_) => const DashboardPage());
+        return MaterialPageRoute(settings: settings, builder: (_) => const DashboardPage());
       case SendMoneyPage.routeName:
-        return MaterialPageRoute(builder: (_) => const SendMoneyPage());
+        return MaterialPageRoute(settings: settings, builder: (_) => const SendMoneyPage());
       case TransactionsPage.routeName:
-        return MaterialPageRoute(builder: (_) => const TransactionsPage());
+        return MaterialPageRoute(settings: settings, builder: (_) => const TransactionsPage());
       default:
-        return MaterialPageRoute(builder: (_) => const InvalidPage());
+        return MaterialPageRoute(settings: settings, builder: (_) => const InvalidPage());
     }
   }
 }

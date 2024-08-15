@@ -3,6 +3,28 @@
         "balance": 500,
         "currency": "PHP"
     },
+    "wallet-empty": {
+        "balance": 0,
+        "currency": "PHP"
+    },
+    "send-money": {
+        "id": "e5f3ab16-43d4-49f8-bb34-3187d2916b1c",
+        "transaction": {
+            "id": "d3c6a4a7-ae61-4df9-8a89-10bcdefd57bc",
+            "type": "deposit",
+            "source": {
+                "id": "6d4e9aa4-4756-467b-ba95-a51dd804b4a4",
+                "name": "Personal Account"
+            },
+            "receiver": {
+                "id": "9dbda536-1d23-4162-a284-2fb6c628fbba",
+                "name": "Someones Account"
+            },
+            "amount": 500.0,
+            "currency": "PHP",
+            "date": 1633795200000
+        }
+    },
     "transactions": [
         {
             "id": "9703c20b-7032-4f4d-80c1-acbd6e1eaafd",

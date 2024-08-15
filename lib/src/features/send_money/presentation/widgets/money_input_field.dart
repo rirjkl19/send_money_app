@@ -6,6 +6,7 @@ import 'package:money_send_app/src/features/dashboard/domain/entities/wallet.dar
 class MoneyInputField extends StatelessWidget {
   const MoneyInputField({
     super.key,
+    this.enabled = true,
     this.controller,
     required this.prefix,
     this.labelText = 'Amount',
@@ -14,6 +15,7 @@ class MoneyInputField extends StatelessWidget {
     this.wallet,
   });
 
+  final bool enabled;
   final TextEditingController? controller;
   final Widget prefix;
   final String labelText;
@@ -28,6 +30,7 @@ class MoneyInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      enabled: enabled,
       controller: controller,
       inputFormatters: [FilteringTextInputFormatter.allow(AppRegex.amountInput)],
       keyboardType: const TextInputType.numberWithOptions(decimal: true),

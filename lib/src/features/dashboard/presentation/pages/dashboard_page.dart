@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:money_send_app/src/features/dashboard/presentation/bloc/wallet_bloc.dart';
+import 'package:money_send_app/src/features/dashboard/presentation/bloc/wallet_cubit.dart';
 import 'package:money_send_app/src/features/dashboard/presentation/widgets/transaction_card.dart';
 import 'package:money_send_app/src/features/dashboard/presentation/widgets/wallet_card.dart';
 import 'package:money_send_app/src/features/send_money/presentation/pages/send_money_page.dart';

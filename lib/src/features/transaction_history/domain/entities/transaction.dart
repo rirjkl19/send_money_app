@@ -21,7 +21,10 @@ class Transaction {
     required this.date,
   });
 
-  String get amountLabel => '${currency.symbol}$amount';
+  /// The balance as a string with 2 decimal places.
+  String get amountAsString => amount.toStringAsFixed(2);
+
+  String get amountLabel => '${currency.symbol}$amountAsString';
 
   @override
   bool operator ==(covariant Transaction other) {
