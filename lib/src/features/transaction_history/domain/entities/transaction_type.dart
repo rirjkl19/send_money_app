@@ -16,7 +16,7 @@ enum TransactionType {
   String get transactionLabel {
     switch (this) {
       case TransactionType.deposit:
-        return 'Cash in transaction using ';
+        return 'Cash in transaction from ';
       case TransactionType.withdraw:
         return 'Sent money to ';
     }

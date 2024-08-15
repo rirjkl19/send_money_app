@@ -21,9 +21,12 @@ class SendMoneyCubit extends Cubit<SendMoneyState> {
         emit(SendMoneyFailure('Invalid amount'));
         return;
       }
-      await Future.delayed(const Duration(seconds: 2));
       final transactionResponse = await _sendMoneyUseCase(
-        SendMoneyArgs(accountNumber: accountNumber, amount: amount, currency: currency),
+        SendMoneyArgs(
+          accountNumber: accountNumber,
+          amount: amount,
+          currency: currency,
+        ),
       );
       emit(SendMoneySuccess(transaction: transactionResponse));
     } catch (e) {

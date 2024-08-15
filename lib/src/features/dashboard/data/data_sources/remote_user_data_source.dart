@@ -3,12 +3,12 @@ import 'package:http/http.dart' as http;
 
 class RemoteUserDataSource {
   Future<http.Response> getUser(String walletId) async {
-    final url = Uri.http(AppConstants.baseUrl, '/users', ({'id': walletId}));
+    final url = Uri.http(AppConstants.baseUrl, '/users/$walletId');
     return await http.get(url);
   }
 
   Future<http.Response> getUsers() async {
-    final url = Uri.http('localhost:3000', '/users');
+    final url = Uri.http(AppConstants.baseUrl, '/users');
     return await http.get(url);
   }
 }

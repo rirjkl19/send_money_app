@@ -8,6 +8,7 @@ class GetTransactionsUseCase {
 
   Future<List<Transaction>> call() async {
     final transactions = await repository.getTransactions();
-    return transactions.map((transaction) => transaction.toEntity()).toList();
+    return transactions.map((transaction) => transaction.toEntity()).toList()
+      ..sort((a, b) => b.date.compareTo(a.date));
   }
 }

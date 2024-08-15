@@ -16,7 +16,11 @@ class TransactionDataSource {
   }
 
   Future<Response> sendMoney(TransactionDto transaction) async {
-    final url = Uri.http(AppConstants.baseUrl, '/send-money');
+    final url = Uri.http(AppConstants.baseUrl, '/transactions');
+
+    // ! Simulate network delay
+    await Future.delayed(Duration(seconds: Random().nextInt(2)));
+
     return http.post(
       url,
       headers: {'Content-Type': 'application/json'},

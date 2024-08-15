@@ -5,6 +5,7 @@ import 'package:money_send_app/src/features/dashboard/data/data_sources/remote_u
 import 'package:money_send_app/src/features/dashboard/data/data_sources/remote_wallet_data_source.dart';
 import 'package:money_send_app/src/features/dashboard/data/repositories/i_user_repository.dart';
 import 'package:money_send_app/src/features/dashboard/data/repositories/i_wallet_repository.dart';
+import 'package:money_send_app/src/features/dashboard/domain/repositories/user_repository.dart';
 import 'package:money_send_app/src/features/dashboard/domain/repositories/wallet_repository.dart';
 import 'package:money_send_app/src/features/dashboard/domain/usecases/get_wallet_use_case.dart';
 import 'package:money_send_app/src/features/dashboard/presentation/bloc/wallet_cubit.dart';
@@ -42,6 +43,7 @@ class _AppBlocWrapperState extends State<AppBlocWrapper> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        RepositoryProvider<UserRepository>(create: (context) => _userRepository),
         RepositoryProvider<WalletRepository>(create: (context) => _walletRepository),
         RepositoryProvider<TransactionRepository>(create: (context) => _transactionRepository),
       ],
