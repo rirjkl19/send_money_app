@@ -6,7 +6,11 @@ class Wallet {
   final double balance;
   final Currency currency;
 
+  /// The balance as a string with 2 decimal places.
   String get balanceAsString => balance.toStringAsFixed(2);
+
+  /// The balance (with 2 decimal places) with the currency symbol.
+  String get balanceWithCurrency => '${currency.symbol}$balanceAsString';
 
   @override
   bool operator ==(covariant Wallet other) {

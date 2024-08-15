@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:money_send_app/src/features/dashboard/presentation/bloc/wallet_bloc.dart';
 import 'package:money_send_app/src/features/send_money/presentation/widgets/money_input_field.dart';
+import 'package:money_send_app/src/features/send_money/presentation/widgets/recipient_input_field.dart';
 import 'package:money_send_app/src/features/send_money/presentation/widgets/send_money_button.dart';
 
 class SendMoneyPage extends StatefulWidget {
@@ -14,18 +17,12 @@ class SendMoneyPage extends StatefulWidget {
 class _SendMoneyPageState extends State<SendMoneyPage> {
   final _formKey = GlobalKey<FormState>();
   final _amountController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    _amountController.addListener(() {
-      setState(() {}); // Rebuilds the widget when the amount changes
-    });
-  }
+  final _formValid = ValueNotifier(false);
 
   @override
   void dispose() {
     _amountController.dispose();
+    _formValid.dispose();
     super.dispose();
   }
 
@@ -37,16 +34,28 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
         child: Form(
           key: _formKey,
-          onChanged: _formKey.currentState?.validate,
+          onChanged: () {
+            _formValid.value = _formKey.currentState?.validate() ?? false;
+          },
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              MoneyInputField(
-                controller: _amountController,
-                prefix: const Text('₱ '),
+              const AccountNumberInputField(),
+              const SizedBox(height: 12),
+              BlocBuilder<WalletCubit, WalletState>(
+                builder: (context, state) {
+                  return MoneyInputField(
+                    controller: _amountController,
+                    prefix: const Text('₱ '),
+                    wallet: state.wallet,
+                  );
+                },
               ),
-              SendMoneyButton(
-                isButtonEnabled: _formKey.currentState?.validate() ?? false,
+              const Spacer(),
+              ListenableBuilder(
+                listenable: _formValid,
+                builder: (context, _) {
+                  return SendMoneyButton(isButtonEnabled: _formValid.value);
+                },
               ),
             ],
           ),
