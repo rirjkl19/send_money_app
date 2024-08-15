@@ -12,7 +12,7 @@ void main() {
     });
 
     test('Deposit should return the correct transaction label', () {
-      expect(TransactionType.deposit.transactionLabel, 'Cash in transaction using ');
+      expect(TransactionType.deposit.transactionLabel, 'Cash in transaction from ');
     });
 
     test('Withdraw should return the correct transaction label', () {

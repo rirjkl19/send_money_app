@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:money_send_app/src/core/entities/user.dart';
 import 'package:money_send_app/src/features/dashboard/domain/entities/currency.dart';
 import 'package:money_send_app/src/features/dashboard/domain/repositories/user_repository.dart';
+import 'package:money_send_app/src/features/dashboard/domain/repositories/wallet_repository.dart';
 import 'package:money_send_app/src/features/dashboard/presentation/bloc/wallet_cubit.dart';
 import 'package:money_send_app/src/features/dashboard/presentation/pages/dashboard_page.dart';
+import 'package:money_send_app/src/features/send_money/domain/usecases/get_current_user_use_case.dart';
 import 'package:money_send_app/src/features/send_money/domain/usecases/send_money_use_case.dart';
+import 'package:money_send_app/src/features/send_money/presentation/bloc/get_current_user_cubit.dart';
 import 'package:money_send_app/src/features/send_money/presentation/bloc/send_money_cubit.dart';
 import 'package:money_send_app/src/features/send_money/presentation/dialogs/send_transaction_failed_dialog.dart';
 import 'package:money_send_app/src/features/send_money/presentation/dialogs/send_transaction_success_dialog.dart';
@@ -40,14 +44,24 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<SendMoneyCubit>(
-      create: (context) {
-        final sendMoneyUseCase = SendMoneyUseCase(
-          userRepository: context.read<UserRepository>(),
-          transactionRepository: context.read<TransactionRepository>(),
-        );
-        return SendMoneyCubit(sendMoneyUseCase);
-      },
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<SendMoneyCubit>(
+          create: (context) {
+            final sendMoneyUseCase = SendMoneyUseCase(
+              walletRepository: context.read<WalletRepository>(),
+              userRepository: context.read<UserRepository>(),
+              transactionRepository: context.read<TransactionRepository>(),
+            );
+            return SendMoneyCubit(sendMoneyUseCase);
+          },
+        ),
+        BlocProvider(
+          create: (context) => GetCurrentUserCubit(
+            GetCurrentUserUseCase(context.read<UserRepository>()),
+          )..getCurrentUser(),
+        ),
+      ],
       child: Scaffold(
         appBar: AppBar(title: const Text('Send Money')),
         body: Padding(
@@ -85,9 +99,14 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
                 },
                 child: Column(
                   children: [
-                    AccountNumberInputField(
-                      controller: _recipientController,
-                      enabled: !sendState.isLoading,
+                    BlocBuilder<GetCurrentUserCubit, User?>(
+                      builder: (context, userState) {
+                        return AccountNumberInputField(
+                          currentUserId: userState?.id,
+                          controller: _recipientController,
+                          enabled: !sendState.isLoading && userState != null,
+                        );
+                      },
                     ),
                     const SizedBox(height: 12),
                     BlocBuilder<WalletCubit, WalletState>(
@@ -95,7 +114,7 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
                         return MoneyInputField(
                           enabled: !sendState.isLoading,
                           controller: _amountController,
-                          prefix: Text('${_currency.symbol} '),
+                          prefix: Text('//${_currency.symbol} '),
                           wallet: walletState.wallet,
                         );
                       },

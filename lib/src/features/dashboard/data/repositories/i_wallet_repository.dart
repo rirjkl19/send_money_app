@@ -23,4 +23,16 @@ interface class IWalletRepository implements WalletRepository {
       throw AppError(message: 'Failed to get wallet balance');
     }
   }
+
+  @override
+  Future<WalletDto> updateWallet(WalletDto wallet) async {
+    try {
+      final response = await walletDataSource.updateWallet(wallet);
+      return WalletDto.fromJson(response.body);
+    } on SocketException {
+      throw AppError.network();
+    } catch (e) {
+      throw AppError(message: 'Failed to update wallet balance');
+    }
+  }
 }

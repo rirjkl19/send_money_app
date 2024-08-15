@@ -43,4 +43,16 @@ class WalletDto {
 
   @override
   int get hashCode => id.hashCode ^ balance.hashCode ^ currency.hashCode;
+
+  WalletDto copyWith({
+    String? id,
+    double? balance,
+    String? currency,
+  }) {
+    return WalletDto(
+      id: id ?? this.id,
+      balance: balance ?? this.balance,
+      currency: currency ?? this.currency,
+    );
+  }
 }

@@ -1,89 +1,89 @@
 {
-    "users": [
-        {
-            "id": "123",
-            "walletId": "54a6cbaa-e0a2-4e08-81e5-1b66df0e81e1",
-            "name": "John Doe"
-        },
-        {
-            "id": "456",
-            "walletId": "19810573-ed3a-4f11-acbc-e8922d3bae47",
-            "name": "Jane Doe"
-        },
-        {
-            "id": "789",
-            "walletId": "26a68177-cf01-48ad-af7e-59def35ec4df",
-            "name": "Government"
-        }
-    ],
-    "wallets": [
-        {
-            "id": "54a6cbaa-e0a2-4e08-81e5-1b66df0e81e1",
-            "balance": 500,
-            "currency": "PHP"
-        },
-        {
-            "id": "19810573-ed3a-4f11-acbc-e8922d3bae47",
-            "balance": 1000,
-            "currency": "PHP"
-        },
-        {
-            "id": "26a68177-cf01-48ad-af7e-59def35ec4df",
-            "balance": 99213789,
-            "currency": "PHP"
-        }
-    ],
-    "transactions": [
-        {
-            "id": "9703c20b-7032-4f4d-80c1-acbd6e1eaafd",
-            "type": "deposit",
-            "source": {
-                "id": "123",
-                "walletId": "54a6cbaa-e0a2-4e08-81e5-1b66df0e81e1",
-                "name": "John Doe"
-            },
-            "receiver": {
-                "id": "456",
-                "walletId": "19810573-ed3a-4f11-acbc-e8922d3bae47",
-                "name": "Jane Doe"
-            },
-            "amount": 500,
-            "currency": "PHP",
-            "date": 1633795200000
-        },
-        {
-            "id": "8c4ac49e-f42b-416a-84ab-072d438c0f49",
-            "type": "withdraw",
-            "source": {
-                "id": "123",
-                "walletId": "54a6cbaa-e0a2-4e08-81e5-1b66df0e81e1",
-                "name": "John Doe"
-            },
-            "receiver": {
-                "id": "456",
-                "walletId": "19810573-ed3a-4f11-acbc-e8922d3bae47",
-                "name": "Jane Doe"
-            },
-            "amount": 10000,
-            "currency": "PHP",
-            "date": 1633795200000
-        },
-        {
-            "id": "e7f9e8c1-9e8e-4e4a-9e4e-1e9e8e7f9e8e",
-            "type": "deposit",
-            "source": {
-                "id": "123",
-                "walletId": "54a6cbaa-e0a2-4e08-81e5-1b66df0e81e1",
-                "name": "John Doe"
-            },
-            "receiver": {
-                "id": "789",
-                "name": "Government",
-                "walletId": "26a68177-cf01-48ad-af7e-59def35ec4df"
-            },
-            "amount": 10000,
-            "currency": "PHP",
-            "date": 1633795200000
-        }
-    ]
+  "users": [
+    {
+      "id": "123",
+      "walletId": "54a6cbaa-e0a2-4e08-81e5-1b66df0e81e1",
+      "name": "John Doe"
+    },
+    {
+      "id": "456",
+      "walletId": "19810573-ed3a-4f11-acbc-e8922d3bae47",
+      "name": "Jane Doe"
+    },
+    {
+      "id": "789",
+      "walletId": "26a68177-cf01-48ad-af7e-59def35ec4df",
+      "name": "Government"
+    }
+  ],
+  "wallets": [
+    {
+      "id": "54a6cbaa-e0a2-4e08-81e5-1b66df0e81e1",
+      "balance": 500,
+      "currency": "PHP"
+    },
+    {
+      "id": "19810573-ed3a-4f11-acbc-e8922d3bae47",
+      "balance": 1000,
+      "currency": "PHP"
+    },
+    {
+      "id": "26a68177-cf01-48ad-af7e-59def35ec4df",
+      "balance": 99213789,
+      "currency": "PHP"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "9703c20b-7032-4f4d-80c1-acbd6e1eaafd",
+      "type": "deposit",
+      "source": {
+        "id": "123",
+        "walletId": "54a6cbaa-e0a2-4e08-81e5-1b66df0e81e1",
+        "name": "John Doe"
+      },
+      "receiver": {
+        "id": "456",
+        "walletId": "19810573-ed3a-4f11-acbc-e8922d3bae47",
+        "name": "Jane Doe"
+      },
+      "amount": 500,
+      "currency": "PHP",
+      "date": 1633795200000
+    },
+    {
+      "id": "8c4ac49e-f42b-416a-84ab-072d438c0f49",
+      "type": "withdraw",
+      "source": {
+        "id": "123",
+        "walletId": "54a6cbaa-e0a2-4e08-81e5-1b66df0e81e1",
+        "name": "John Doe"
+      },
+      "receiver": {
+        "id": "456",
+        "walletId": "19810573-ed3a-4f11-acbc-e8922d3bae47",
+        "name": "Jane Doe"
+      },
+      "amount": 10000,
+      "currency": "PHP",
+      "date": 1633795200000
+    },
+    {
+      "id": "e7f9e8c1-9e8e-4e4a-9e4e-1e9e8e7f9e8e",
+      "type": "deposit",
+      "source": {
+        "id": "123",
+        "walletId": "54a6cbaa-e0a2-4e08-81e5-1b66df0e81e1",
+        "name": "John Doe"
+      },
+      "receiver": {
+        "id": "789",
+        "name": "Government",
+        "walletId": "26a68177-cf01-48ad-af7e-59def35ec4df"
+      },
+      "amount": 10000,
+      "currency": "PHP",
+      "date": 1633795200000
+    }
+  ]
 }
