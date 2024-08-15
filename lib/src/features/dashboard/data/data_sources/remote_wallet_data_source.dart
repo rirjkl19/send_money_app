@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 class RemoteWalletDataSource {
   Future<http.Response> getWallet(String walletId) async {
-    final url = Uri.http(AppConstants.baseUrl, '/wallet', ({'id': walletId}));
+    final url = Uri.http(AppConstants.baseUrl, '/wallets/$walletId');
     return await http.get(url);
   }
 }
