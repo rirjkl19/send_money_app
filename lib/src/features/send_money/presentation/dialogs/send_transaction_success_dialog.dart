@@ -28,6 +28,7 @@ class SendTransactionSuccessDialog extends StatelessWidget with AppDialogHelper 
               const SizedBox(height: 12),
               Text(
                 "You've successfully sent $amountSent",
+                textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 12),

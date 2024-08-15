@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:money_send_app/src/core/entities/user.dart';
 import 'package:money_send_app/src/features/dashboard/domain/entities/currency.dart';
 import 'package:money_send_app/src/features/transaction_history/domain/entities/transaction_type.dart';
@@ -21,10 +22,7 @@ class Transaction {
     required this.date,
   });
 
-  /// The balance as a string with 2 decimal places.
-  String get amountAsString => amount.toStringAsFixed(2);
-
-  String get amountLabel => '${currency.symbol}$amountAsString';
+  String get amountLabel => NumberFormat.currency(symbol: currency.symbol).format(amount);
 
   @override
   bool operator ==(covariant Transaction other) {

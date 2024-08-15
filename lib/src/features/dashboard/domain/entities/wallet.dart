@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:money_send_app/src/features/dashboard/domain/entities/currency.dart';
 
 class Wallet {
@@ -6,11 +7,7 @@ class Wallet {
   final double balance;
   final Currency currency;
 
-  /// The balance as a string with 2 decimal places.
-  String get balanceAsString => balance.toStringAsFixed(2);
-
-  /// The balance (with 2 decimal places) with the currency symbol.
-  String get balanceWithCurrency => '${currency.symbol}$balanceAsString';
+  String get balanceLabel => NumberFormat.currency(symbol: currency.symbol).format(balance);
 
   @override
   bool operator ==(covariant Wallet other) {

@@ -6,7 +6,6 @@ class WalletCard extends StatefulWidget {
   const WalletCard({
     super.key,
     required this.balance,
-    required this.currency,
     required this.onTapSendMoney,
     required this.onTapViewTransactions,
     this.error,
@@ -14,7 +13,6 @@ class WalletCard extends StatefulWidget {
   });
 
   final String balance;
-  final String currency;
 
   final VoidCallback? onTapSendMoney;
   final VoidCallback? onTapViewTransactions;
@@ -58,9 +56,7 @@ class _WalletCardState extends State<WalletCard> {
                       children: [
                         Expanded(
                           child: Text(
-                            _showBalance.value || widget.isLoading
-                                ? '${widget.currency}${widget.balance}'
-                                : '${widget.currency}********',
+                            _showBalance.value || widget.isLoading ? widget.balance : '********',
                             maxLines: 1,
                             style: Theme.of(context).textTheme.headlineLarge,
                             overflow: TextOverflow.ellipsis,

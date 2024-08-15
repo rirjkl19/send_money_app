@@ -25,8 +25,7 @@ class DashboardPage extends StatelessWidget {
               return WalletCard(
                 isLoading: state.isLoading,
                 error: state is WalletError ? state.message : null,
-                balance: state.wallet?.balanceAsString ?? 'Loading',
-                currency: state.wallet?.currency.symbol ?? '',
+                balance: state.wallet?.balanceLabel ?? 'Loading',
                 onTapSendMoney: state.isLoading
                     ? null
                     : () => Navigator.of(context).pushNamed(SendMoneyPage.routeName),

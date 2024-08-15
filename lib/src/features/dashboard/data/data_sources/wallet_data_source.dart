@@ -23,11 +23,7 @@ class WalletDataSource {
       // ! Simulate network delay
       await Future.delayed(Duration(seconds: Random().nextInt(2)));
 
-      return await http.post(
-        url,
-        headers: {'Content-Type': 'application/json'},
-        body: json.encode({'amount': amount, 'accountNumber': accountNumber}),
-      );
+      return http.post(url, body: json.encode({'amount': amount, 'accountNumber': accountNumber}));
     } else {
       throw Exception('Failed to send money');
     }

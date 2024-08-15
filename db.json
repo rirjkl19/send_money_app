@@ -1,10 +1,6 @@
 {
     "wallet": {
-        "balance": 500,
-        "currency": "PHP"
-    },
-    "wallet-empty": {
-        "balance": 0,
+        "balance": 999999,
         "currency": "PHP"
     },
     "send-money": {

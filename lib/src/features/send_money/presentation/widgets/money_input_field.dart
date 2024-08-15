@@ -37,11 +37,11 @@ class MoneyInputField extends StatelessWidget {
       validator: customValidator ??
           (value) {
             if (wallet != null && value!.isEmpty) {
-              return 'Amount is required. You have ${wallet?.balanceWithCurrency}';
+              return 'Amount is required. You have ${wallet?.balanceLabel}';
             }
             if (value!.isEmpty) return 'Please enter an amount.';
             if (wallet != null && double.parse(value) > wallet!.balance) {
-              return 'You only have ${wallet?.balanceWithCurrency} in your wallet.';
+              return 'You only have ${wallet?.balanceLabel} in your wallet.';
             }
             return null;
           },
