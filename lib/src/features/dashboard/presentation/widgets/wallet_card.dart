@@ -37,6 +37,7 @@ class _WalletCardState extends State<WalletCard> {
   Widget build(BuildContext context) {
     return Card(
       elevation: 4,
+      clipBehavior: Clip.antiAlias,
       margin: const EdgeInsets.all(16),
       child: Stack(
         clipBehavior: Clip.antiAlias,
@@ -109,7 +110,7 @@ class _WalletCardState extends State<WalletCard> {
           if (_hasError)
             Positioned.fill(
               child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
+                filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
                 child: Container(
                   alignment: Alignment.center,
                   color: Colors.white60,

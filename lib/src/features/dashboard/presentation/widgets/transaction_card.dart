@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:money_send_app/src/features/transaction_history/domain/entities/transaction.dart';
 import 'package:money_send_app/src/features/transaction_history/presentation/widgets/transaction_list_card.dart';
@@ -17,6 +19,7 @@ class TransactionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      clipBehavior: Clip.antiAlias,
       elevation: 4,
       margin: const EdgeInsets.all(16),
       child: Stack(
@@ -56,13 +59,19 @@ class TransactionCard extends StatelessWidget {
                   ),
                 ),
               ),
-              if (error != null)
-                Padding(
-                  padding: const EdgeInsets.all(24),
-                  child: Text(error!),
-                ),
             ],
           ),
+          if (error != null)
+            Positioned.fill(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+                child: Container(
+                  alignment: Alignment.center,
+                  color: Colors.white60,
+                  child: Text(error!, textAlign: TextAlign.center),
+                ),
+              ),
+            ),
         ],
       ),
     );
