@@ -2,7 +2,7 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "PURO: Run flutter 3.24",
+			"label": "PURO: Run flutter 3.24 (android proxy)",
 			"command": "puro",
 			"icon": {
 				"color": "terminal.ansiBlue"
@@ -12,6 +12,20 @@
 				"run",
 				"--dart-define",
 				"BASE_URL=10.0.2.2:3000",
+			],
+			"problemMatcher": []
+		},
+		{
+			"label": "PURO: Run flutter 3.24",
+			"command": "puro",
+			"icon": {
+				"color": "terminal.ansiBlue"
+			},
+			"args": [
+				"flutter",
+				"run",
+				"--dart-define",
+				"BASE_URL=localhost:3000",
 			],
 			"problemMatcher": []
 		},
