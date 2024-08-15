@@ -17,7 +17,7 @@ First we need to run setup the fake API server. To do this, follow these steps:
 1. Install the required dependencies:
 
    ```bash
-   npm install
+   npm install json-server
    ```
 
 2. Start the fake API server:
