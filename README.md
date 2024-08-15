@@ -1,6 +1,9 @@
 # money_send_app
 
-A flutter app project created for maya software engineering test.
+A flutter app project created for a certain companiy software engineering test.
+
+<img src="https://github.com/user-attachments/assets/f5272f8e-edda-4f3f-9490-06d035d73513" height=500> 
+
 
 ## Getting Started
 
