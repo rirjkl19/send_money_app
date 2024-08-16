@@ -1,6 +1,6 @@
 # money_send_app
 
-A flutter app project created for a certain companiy software engineering test.
+A flutter app project created for a certain company software engineering test.
 
 <img src="https://github.com/user-attachments/assets/f5272f8e-edda-4f3f-9490-06d035d73513" height=500>
 
@@ -11,7 +11,7 @@ A flutter app project created for a certain companiy software engineering test.
 
 ## How to Run
 
-First we need to run setup the fake API server. To do this, follow these steps:
+### First we need to setup the fake API server. To do this, follow these steps:
 
 1. Install the required dependencies:
 
@@ -27,7 +27,7 @@ First we need to run setup the fake API server. To do this, follow these steps:
 
 3. The fake API server will start running on `http://localhost:3000`.
 
-To run the **Money Send App** project, follow these steps:
+### To run the **Money Send App** project, follow these steps:
 
 1. Install the required dependencies:
 
@@ -47,13 +47,13 @@ To run the **Money Send App** project, follow these steps:
 
 3. Once inside the app. You may send money to the ff users:
 
-| Name       | ID  |
-| ---------- | --- |
-| John Doe   | 123 |
-| Jane Doe   | 456 |
-| Government | 789 |
+   | Name       | ID  |
+   | ---------- | --- |
+   | John Doe   | 123 |
+   | Jane Doe   | 456 |
+   | Government | 789 |
 
-> Note that the the current user is **John Doe** with the ID of **123**. You may change the current user by going to the `MockUserDataSource` class.
+   > Note that the the current user is **John Doe** with the ID of **123**. You may change the current user by going to the `MockUserDataSource` class.
 
 ## Features
 
