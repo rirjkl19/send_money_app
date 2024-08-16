@@ -2,8 +2,7 @@
 
 A flutter app project created for a certain companiy software engineering test.
 
-<img src="https://github.com/user-attachments/assets/f5272f8e-edda-4f3f-9490-06d035d73513" height=500> 
-
+<img src="https://github.com/user-attachments/assets/f5272f8e-edda-4f3f-9490-06d035d73513" height=500>
 
 ## Getting Started
 
@@ -44,7 +43,17 @@ To run the **Money Send App** project, follow these steps:
 
    This will launch the app on the connected device or emulator. The `API_URL` environment variable is used to specify the URL of the fake API server. Change the value of `API_URL` if the fake API server is running on a different URL.
 
-> If you are using android emulator, you may want to use `10.0.2.2:3000` as the `API_URL` instead of `localhost:3000`.
+   > If you are using android emulator, you may want to use `10.0.2.2:3000` as the `API_URL` instead of `localhost:3000`.
+
+3. Once inside the app. You may send money to the ff users:
+
+| Name       | ID  |
+| ---------- | --- |
+| John Doe   | 123 |
+| Jane Doe   | 456 |
+| Government | 789 |
+
+> Note that the the current user is **John Doe** with the ID of **123**. You may change the current user by going to the `MockUserDataSource` class.
 
 ## Features
 
